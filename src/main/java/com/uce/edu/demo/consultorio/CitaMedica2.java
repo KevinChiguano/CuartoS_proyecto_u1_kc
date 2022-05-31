@@ -2,46 +2,45 @@ package com.uce.edu.demo.consultorio;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CitaMedica {
+public class CitaMedica2 {
 
 	private LocalDateTime fechaCita;
-
-	private Doctor doctor;
-
-	private Paciente paciente;
-
-	//2) DI por constructor
-	public CitaMedica(Doctor doctor, Paciente paciente) {
-		this.doctor = doctor;
-		this.paciente = paciente;
-	}
-
-	public String agendar(LocalDateTime fechaCita, String nombre, String apellido, int edad, String ciudad,
-			String nombrePaciente, int edadPaciente) {
-
+	
+	//DI pro metodos SET
+	private Doctor doctor; //3) a su metodo SET le pongo @Autowired
+	private Paciente paciente; //a su metodo SET le pongo @Autowired
+	
+	
+	public String agendar(LocalDateTime fechaCita,String nombre, String apellido, int edad,
+			String ciudad, String nombrePaciente, int edadPaciente) {
+		
+				
 		this.doctor.setNombre(nombre);
 		this.doctor.setApellido(apellido);
 		this.doctor.setEdad(edad);
 		this.doctor.setCiudad(ciudad);
-
+		
 		this.paciente.setEdad(edadPaciente);
 		this.paciente.setNombre(nombrePaciente);
-
-		// Seteamos los atributos de la cita medica
+		
+		//Seteamos los atributos de la cita medica
 		this.fechaCita = fechaCita;
 
-		// Se inserta la cita en la base de datos
-		return "Cita agendada";
+		
+		//Se inserta la cita en la base de datos
+		return "Cita agendada 2";
 	}
-
-	// SET y GET
+	
+	//SET y GET
 	public Doctor getDoctor() {
 		return doctor;
 	}
 
+	@Autowired
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
@@ -50,6 +49,7 @@ public class CitaMedica {
 		return paciente;
 	}
 
+	@Autowired
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
@@ -61,5 +61,7 @@ public class CitaMedica {
 	public void setFechaCita(LocalDateTime fechaCita) {
 		this.fechaCita = fechaCita;
 	}
+	
+	
 
 }
