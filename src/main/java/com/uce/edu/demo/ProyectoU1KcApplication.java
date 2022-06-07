@@ -11,26 +11,14 @@ import com.uce.edu.demo.consultorio.CitaMedica2;
 import com.uce.edu.demo.escuela.Matricula;
 import com.uce.edu.demo.escuela.Retiro;
 import com.uce.edu.demo.escuela.Traslado;
+import com.uce.edu.demo.modelo.Estudiante;
+import com.uce.edu.demo.service.IEstudianteService;
 
 @SpringBootApplication
 public class ProyectoU1KcApplication implements CommandLineRunner{
 	
-	//DI por atributo
-//	@Autowired
-//	private CitaMedica cita;
-	
-//	@Autowired
-//	private CitaMedica2 cita;
-
-	//DI por atributo
 	@Autowired
-	private Matricula matricula1;
-	
-	@Autowired
-	private Retiro retiro1;
-	
-	@Autowired
-	private Traslado traslado1;
+	private IEstudianteService estudianteService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1KcApplication.class, args);
@@ -38,21 +26,26 @@ public class ProyectoU1KcApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-//		System.out.println("Mi primer proyecto con Spring Framework");
-//		
-//		String respuesta = this.cita.agendar(LocalDateTime.now(), "Javier", "Teran", 32, "Quito", "Pepito", 19);
-//		System.out.println(respuesta);
 		
+		Estudiante e = new Estudiante();
+		e.setNombre("Edison");
+		e.setApellido("Cayambe");
+		e.setCedula("1723344567");		
+		this.estudianteService.ingresarEstudiante(e);
 		
-		String res = this.matricula1.matricular(LocalDateTime.now(), "Juan", "Burgos", 15, "Matematica", 14, "A-001");
-		System.out.println(res);
+		Estudiante e1 = new Estudiante();
+		e1.setNombre("Pepito");
+		e1.setApellido("Perez");
+		e1.setCedula("0923344567");	
+		this.estudianteService.ingresarEstudiante(e1);
 		
-		res = this.retiro1.retirar(LocalDateTime.now(), "Juan", "Burgos", 15, "Matematica", 14, "A-001");
-		System.out.println(res);
+		//Usar los 3 metodos restantes
+		e.setCedula("1714584396");
+		this.estudianteService.actualizarEstudiante(e);
 		
-		res = this.traslado1.trasladar("Juan", "Burgos", 15, "Liceo Empresarial");
-		System.out.println(res);
+		this.estudianteService.buscarPorApellido("Cayambe");
+		
+		this.estudianteService.borrarEstudiante("0923344567");
 		
 	}
 
