@@ -11,30 +11,30 @@ import com.uce.edu.demo.repository.IMateriaRepository;
 public class MateriaServiceImpl implements IMateriaService{
 
 	@Autowired
-	private IMateriaRepository materiaRepository;
+	private IMateriaRepository imateriaRepository;
 	
 	@Override
 	public void ingresarMateria(Materia m) {
 		// TODO Auto-generated method stub
-		this.materiaRepository.insertar(m);
+		this.imateriaRepository.insertar(m);
 	}
 
 	@Override
 	public Materia buscarPorNombre(String nombre) {
 		// TODO Auto-generated method stub
-		return this.materiaRepository.buscar(nombre);
+		return this.imateriaRepository.buscar(nombre);
 	}
 
 	@Override
 	public void actualizarMateria(Materia m) {
 		// TODO Auto-generated method stub
-		this.materiaRepository.actualizar(m);
+		this.imateriaRepository.actualizar(m);
 	}
 
 	@Override
 	public void borrarMateria(String nombre) {
 		// TODO Auto-generated method stub
-		this.materiaRepository.eliminar(nombre);
+		this.imateriaRepository.eliminar(nombre);
 	}
 
 }
