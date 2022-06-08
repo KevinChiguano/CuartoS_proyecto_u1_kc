@@ -1,5 +1,6 @@
 package com.uce.edu.demo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
+import com.uce.edu.demo.banco.service.IDepositoService;
+import com.uce.edu.demo.banco.service.ITransferenciaService;
 import com.uce.edu.demo.modelo.Estudiante;
 import com.uce.edu.demo.modelo.Materia;
 import com.uce.edu.demo.modelo.Matricula;
@@ -21,13 +23,10 @@ import com.uce.edu.demo.service.IMatriculaService;
 public class ProyectoU1KcApplication implements CommandLineRunner{
 	
 	@Autowired
-	private IEstudianteService estudianteService;
+	private ITransferenciaService iTransferenciaService;
 	
 	@Autowired
-	private IMateriaService materiaService;
-	
-	@Autowired
-	private IMatriculaService matriculaService;
+	private IDepositoService depositoService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1KcApplication.class, args);
@@ -36,42 +35,8 @@ public class ProyectoU1KcApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Estudiante e = new Estudiante();
-		e.setNombre("Edison");
-		e.setApellido("Cayambe");
-		e.setCedula("1723344567");		
-		
-		
-		//Materia
-		Materia m = new Materia();
-		m.setNombre("Matematica");
-		m.setSemestre("1");
-		
-		Materia m1 = new Materia();
-		m1.setNombre("Calculo");
-		m1.setSemestre("2");
-		
-		this.materiaService.ingresarMateria(m);
-		this.materiaService.actualizarMateria(m);
-		this.materiaService.buscarPorNombre("Matematica");
-		this.materiaService.borrarMateria("Matematica");
-		
-		List<Materia> materias = new ArrayList<Materia>();
-		materias.add(m);
-		materias.add(m1);
-		
-		System.out.println();
-		
-		//Matricula
-		Matricula ma = new Matricula();
-		ma.setEstudiante(e);
-		ma.setMateria(materias);
-		ma.setNumero("123");
-		
-		this.matriculaService.ingresarMatricula(ma);
-		this.matriculaService.actualizarMatricula(ma);
-		this.matriculaService.buscarPorNumero("123");
-		this.matriculaService.borrarMatricula("123");
+		this.iTransferenciaService.realizarTransferencia("12", "13", new BigDecimal(20));
+		this.depositoService.realizarDeposito("14", new BigDecimal(50));
 		
 	}
 
