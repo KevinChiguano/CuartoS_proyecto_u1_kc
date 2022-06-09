@@ -36,4 +36,31 @@ public class DepositoServiceImpl implements IDepositoService{
 		
 	}
 
+	@Override
+	public void eliminarDeposito(String numeroCtaDestino) {
+		// TODO Auto-generated method stub
+		this.depositoRepository.eliminarDeposito(numeroCtaDestino);
+	}
+
+	@Override
+	public Deposito buscarDeposito(String numeroCtaDestino) {
+		// TODO Auto-generated method stub
+		return this.buscarDeposito(numeroCtaDestino);
+	}
+
+	@Override
+	public void actualizarDeposito(String numeroCtaDestino, BigDecimal monto) {
+		// TODO Auto-generated method stub
+		CuentaBancaria ctaDestino = this.bancariaService.buscar(numeroCtaDestino);
+		BigDecimal saldoFinal = ctaDestino.getSaldo().add(monto);
+		
+		Deposito deposito = new Deposito();
+		deposito.setFecha(LocalDateTime.now());
+		deposito.setNumeroCuentaDestino(numeroCtaDestino);
+		deposito.setMonto(saldoFinal);
+		this.depositoRepository.actualizarDeposito(deposito);
+		
+	}
+
+
 }
