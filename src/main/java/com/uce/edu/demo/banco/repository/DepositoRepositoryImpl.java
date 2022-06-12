@@ -50,7 +50,7 @@ public class DepositoRepositoryImpl implements IDepositoRepository {
 		Deposito depo1 = new Deposito();
 		depo1.setFecha(LocalDateTime.of(2021, 2, 10, 8, 50, 2));
 		depo1.setMonto(new BigDecimal(20));
-		depo1.setNumeroCuentaDestino("12345");
+		depo1.setNumeroCuentaDestino("1345");
 		
 		listaDepositos.add(depo1);
 		
