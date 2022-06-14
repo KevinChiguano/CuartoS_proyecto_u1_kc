@@ -12,7 +12,6 @@ import com.uce.edu.demo.banco.repository.ICuentaBancariaRepository;
 @Service
 @Qualifier("ahorros")
 public class CuentaBancariaAhorrosServiceImpl implements ICuentaBancariaService{
-
 	
 	
 	@Override
