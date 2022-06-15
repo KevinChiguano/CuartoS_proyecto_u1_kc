@@ -5,7 +5,7 @@ import com.uce.edu.demo.modelo.Matricula;
 
 public interface IMatriculaService {
 
-	public void ingresarMatricula(Matricula ma);
+	public void crearMatricula(Matricula ma);
 
 	public Matricula buscarPorNumero(String numero);
 
