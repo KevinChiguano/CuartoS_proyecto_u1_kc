@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-//@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
+@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
 //@Scope("singleton") //No es recomendable usar esta forma
 
 public class ProfesorGeneral {
